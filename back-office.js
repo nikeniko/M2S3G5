@@ -27,6 +27,7 @@ document
       body: JSON.stringify(newProduct),
     }).then((resp) => {
       if (resp.ok) {
+        alert("Elemento creato con successo!");
         return resp.json();
       }
     });
@@ -34,6 +35,10 @@ document
 
 document.getElementById("modify").addEventListener("click", function (e) {
   e.preventDefault();
+
+  if (!confirm("sei sicuro di voler cancellare questo elemento?")) {
+    return;
+  }
 
   const _id = document.getElementById("_id").value;
   const name = document.getElementById("name").value;
@@ -60,6 +65,7 @@ document.getElementById("modify").addEventListener("click", function (e) {
     body: JSON.stringify(modificatedProduct),
   }).then((resp) => {
     if (resp.ok) {
+      alert("Elemento modificato con successo!");
       return resp.json();
     }
   });
@@ -87,4 +93,17 @@ document.getElementById("delete").addEventListener("click", function (e) {
       return resp.json();
     }
   });
+});
+
+reset.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const reset = document.getElementById("reset");
+
+  const _id = (document.getElementById("_id").value = "");
+  const name = (document.getElementById("name").value = "");
+  const description = (document.getElementById("description").value = "");
+  const price = (document.getElementById("price").value = "");
+  const imageUrl = (document.getElementById("imageUrl").value = "");
+  const brand = (document.getElementById("brand").value = "");
 });

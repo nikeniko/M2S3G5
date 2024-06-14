@@ -48,18 +48,18 @@ const productCardsGenerator = (
   const buttonGroup = document.createElement("div");
   buttonGroup.className = "btn-group";
 
-  const buttonHide = document.createElement("button");
-  buttonHide.className = "btn btn-sm btn-outline-primary";
-  buttonHide.innerText = "modify";
-  buttonHide.addEventListener("click", (event) => {
-    col.remove();
+  const buttonModify = document.createElement("button");
+  buttonModify.className = "btn btn-sm btn-outline-primary";
+  buttonModify.innerText = "modify";
+  buttonModify.addEventListener("click", function () {
+    window.location.href = "back-office.html";
   });
 
   const small = document.createElement("small");
   small.className = "text-muted fs-5";
   small.innerText = prices + "€";
 
-  buttonGroup.append(buttonHide);
+  buttonGroup.append(buttonModify);
   flexContainer.append(buttonGroup, small);
   body.append(h5, p, flexContainer);
   card.append(img, brandName, body);
